@@ -1,4 +1,4 @@
-pub(crate) mod tlv;
+pub mod tlv;
 
 mod device;
 mod pairing;

@@ -2,7 +2,7 @@ use std::{
     ffi::OsStr,
     fs,
     io::{BufReader, BufWriter, Read, Write},
-    os::unix::fs::PermissionsExt,
+//    os::unix::fs::PermissionsExt,
     path::{Path, PathBuf},
     str,
 };
@@ -25,9 +25,9 @@ impl FileStorage {
         let path = Path::new(dir).to_path_buf();
         fs::create_dir_all(&path)?;
 
-        let mut perms = fs::metadata(&path)?.permissions();
-        perms.set_mode(0o777);
-        fs::set_permissions(&path, perms)?;
+//        let mut perms = fs::metadata(&path)?.permissions();
+//        perms.set_mode(0o777);
+//        fs::set_permissions(&path, perms)?;
         Ok(FileStorage { dir_path: path })
     }
 
