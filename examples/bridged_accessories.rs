@@ -1,4 +1,6 @@
 use std::sync::{Arc, Mutex};
+use env_logger::{Builder, Target};
+use log::{debug, error};
 
 use hap::{
     accessory::{bridge, door, outlet, security_system, valve, Category, Information},
@@ -103,6 +105,16 @@ impl Updatable<u8> for VirtualDoor {
 }
 
 fn main() {
+    println!("let's log");
+    let mut builder = Builder::from_default_env();
+    //builder.parse_filters("info");
+    builder.target(Target::Stdout);
+
+    builder.init();
+
+    debug!("log started");
+    error!("log started");
+
     let bridge = bridge::new(Information {
         name: "Bridge".into(),
         ..Default::default()
