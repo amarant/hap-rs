@@ -8,7 +8,7 @@ use std::{
 };
 
 use eui48::MacAddress;
-use pnet::datalink;
+use get_if_addrs;
 use rand::{self, Rng};
 
 use crate::{
@@ -193,10 +193,10 @@ impl Default for Config {
 }
 
 fn current_ip() -> Option<IpAddr> {
-    for iface in datalink::interfaces() {
-        for ip_network in iface.ips {
-            if ip_network.is_ipv4() {
-                let ip = ip_network.ip();
+    if let Ok(ifaces) = get_if_addrs::get_if_addrs() {
+        for iface in ifaces.iter() {
+            let ip = iface.ip();
+            if ip.is_ipv4() {
                 if !ip.is_loopback() {
                     return Some(ip);
                 }
