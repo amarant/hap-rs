@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/hap-rs.iml" filepath="$PROJECT_DIR$/.idea/hap-rs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hap-rs.iml" filepath="$PROJECT_DIR$/hap-rs.iml" />
     </modules>
   </component>
 </project>
